@@ -1,0 +1,184 @@
+PERIMETER-FW(config)#end
+PERIMETER-FW#conf t
+PERIMETER-FW(config)#dhcpd ?
+
+configure mode commands/options:
+  address      Configure the IP pool address range after this keyword
+  auto_config  Enable auto configuration from client
+  dns          Configure the IP addresses of the DNS servers after this keyword
+  domain       Configure DNS domain name after this keyword
+  enable       Enable the DHCP server
+  lease        Configure the DHCPD lease length after this keyword
+  option       Configure options to pass to DHCP clients after this keyword
+PERIMETER-FW(config)#dhcpd 
+% Incomplete command.
+PERIMETER-FW(config)#dhcpd address 201.0.101-201.0.0.199
+% Incomplete command.
+PERIMETER-FW(config)#dhcpd address 201.0.0.101-201.0.0.199
+% Incomplete command.
+PERIMETER-FW(config)#dhcpd address 192.168.100.101-192.168.100.199
+% Incomplete command.
+PERIMETER-FW(config)#dhcpd address 201.0.0.101-201.0.0.199
+% Incomplete command.
+PERIMETER-FW(config)#wr 
+                      ^
+% Invalid input detected at '^' marker.
+	
+PERIMETER-FW(config)#wr mem
+Building configuration...
+Cryptochecksum: 682f2af2 29515061 6a605d47 0c8668f1
+
+930  bytes copied in 1.501 secs (619 bytes/sec)
+[OK]
+PERIMETER-FW(config)#
+PERIMETER-FW(config)#PERIMETER-FW(config)# dhcpd address 201.0.0.101-201.0.0.199 inside
+                      ^
+% Invalid input detected at '^' marker.
+	
+PERIMETER-FW(config)#dhcpd address 201.0.0.101-201.0.0.199 inside
+Warning, DHCP pool range is limited to 32 addresses, set address range as: 201.0.0.101-201.0.0.132
+Address range subnet 201.0.0.101 or 201.0.0.199 is not the same as inside interface subnet 10.10.10.1
+PERIMETER-FW(config)#dhcpd address 201.0.0.101-201.0.0.199 LMZ
+Warning, DHCP pool range is limited to 32 addresses, set address range as: 201.0.0.101-201.0.0.132
+PERIMETER-FW(config)#dhcpd address 201.0.0.101-201.0.0.199 LMZ
+PERIMETER-FW#
+%SYS-5-CONFIG_I: Configured from console by console
+
+PERIMETER-FW#conf t
+PERIMETER-FW(config)#dhcpd address 201.0.0.101-201.0.0.199 LMZ
+Warning, DHCP pool range is limited to 32 addresses, set address range as: 201.0.0.101-201.0.0.132
+PERIMETER-FW(config)#dhcpd address 201.0.0.101-201.0.0.199 LMZ
+Warning, DHCP pool range is limited to 32 addresses, set address range as: 201.0.0.101-201.0.0.132
+PERIMETER-FW(config)#
+PERIMETER-FW(config)#
+PERIMETER-FW(config)#dhcpd dns 8.8.8.8
+PERIMETER-FW(config)#dhcpd en
+PERIMETER-FW(config)#dhcpd enable ?
+
+configure mode commands/options:
+  LMZ        Name of interface GigabitEthernet1/1
+  INSIDE     Name of interface GigabitEthernet1/2
+  OUTSIDE    Name of interface GigabitEthernet1/3
+PERIMETER-FW(config)#dhcpd enable LMZ
+PERIMETER-FW(config)#wr mem
+Building configuration...
+Cryptochecksum: 682f2af2 29515061 6a605d47 0c8668f1
+
+1006  bytes copied in 2.588 secs (388 bytes/sec)
+[OK]
+PERIMETER-FW(config)#show start
+: Saved
+: Written by enable_15 at 21:08:58 UTC Mar 24 2025
+: Call-home enabled from prompt by enable_15 at 21:08:58 UTC Mar 24 2025
+:
+ASA Version 9.6(1)
+!
+hostname PERIMETER-FW
+domain-name wr
+names
+!
+interface GigabitEthernet1/1
+ nameif LMZ
+ security-level 100
+ ip address 201.0.0.1 255.0.0.0
+!
+interface GigabitEthernet1/2
+ nameif INSIDE
+ security-level 100
+ ip address 10.10.10.1 255.255.255.0
+!
+interface GigabitEthernet1/3
+ nameif OUTSIDE
+ security-level 0
+
+PERIMETER-FW(config)#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/2, changed state to down
+
+PERIMETER-FW(config)#
+PERIMETER-FW(config)#
+PERIMETER-FW(config)#sh runn
+: Saved
+:
+ASA Version 9.6(1)
+!
+hostname PERIMETER-FW
+domain-name wr
+names
+!
+interface GigabitEthernet1/1
+ nameif LMZ
+ security-level 100
+ ip address 201.0.0.1 255.0.0.0
+!
+interface GigabitEthernet1/2
+ nameif INSIDE
+ security-level 100
+ ip address 10.10.10.1 255.255.255.0
+!
+interface GigabitEthernet1/3
+ nameif OUTSIDE
+ security-level 0
+ ip address 20.20.20.1 255.255.255.0
+!
+interface GigabitEthernet1/4
+ no nameif
+ no security-level
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/5
+ no nameif
+ no security-level
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/6
+ no nameif
+ no security-level
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/7
+ no nameif
+ no security-level
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/8
+ no nameif
+ no security-level
+ no ip address
+ shutdown
+!
+interface Management1/1
+ management-only
+ no nameif
+ no security-level
+ no ip address
+!
+!
+!
+!
+!
+!
+!
+!
+username Gtech password sm8xhRiynu22OXxE encrypted
+!
+!
+!
+!
+telnet timeout 5
+ssh timeout 5
+!
+dhcpd dns 8.8.8.8
+!
+dhcpd address 201.0.0.101-201.0.0.132 LMZ
+dhcpd enable LMZ
+!
+!
+!
+!
+!
+PERIMETER-FW(config)#
+PERIMETER-FW(config)#
