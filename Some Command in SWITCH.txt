@@ -1,0 +1,54 @@
+
+
+Switch(config)#int vlan 1
+Switch(config-if)#ip address 192.168.1.1 255.255.255.0
+Switch(config-if)#no shut
+
+SW1#copy running-config startup-config
+
+SW1(config)#line console 0
+SW1(config-line)#password 123
+SW1(config-line)#login
+SW1(config-line)#
+SW1(config-line)#
+SW1(config-line)#
+SW1(config-line)#exit
+SW1(config)#
+SW1(config)#line vty 0 15
+SW1(config-line)#password 123
+SW1(config-line)#login
+SW1(config-line)#
+
+Disable switch ports
+===========================
+
+SW1(config)#int range g0/2-25
+SW1(config-if-range)#shutdown
+SW1(config-if-range)#exit
+SW1(config)#exit
+SW1#
+
+configure SSH
+==============
+SW1#conf t
+SW1(config)#ip domain-name musanze.site
+SW1(config)#crypto key generate rsa
+
+How many bits in the modulus [512]: 1024
+
+SW1(config)#username admin privilege 15 password 123
+SW1(config)#line vty 0 15
+SW1(config-line)#transport input ss
+
+SW1(config-line)#transport input ssh
+SW1(config-line)#login local
+SW1(config-line)#
+SW1(config-line)#exit
+SW1(config)#
+SW1(config)#ip ssh version 2
+SW1(config)#exit
+
+
+
+
+

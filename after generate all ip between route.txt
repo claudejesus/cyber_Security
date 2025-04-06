@@ -1,0 +1,6 @@
+after generate all ip between router and server
+make == > ip logging server ip
+end
+go to server syslog
+
+//7

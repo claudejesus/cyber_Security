@@ -1,0 +1,40 @@
+rable program or batch file.
+
+C:\>cd snort
+
+C:\Snort>cd bin
+
+C:\Snort\bin>snort -v
+Running in packet dump mode
+
+        --== Initializing Snort ==--
+Initializing Output Plugins!
+pcap DAQ configured to passive.
+The DAQ version does not support reload.
+Acquiring network traffic from "\Device\NPF_{39731FBC-23FC-4298-BD80-D36223F0CB3A}".
+Decoding Ethernet
+
+        --== Initialization Complete ==--
+
+   ,,_     -*> Snort! <*-
+  o"  )~   Version 2.9.20-WIN64 GRE (Build 82)
+   ''''    By Martin Roesch & The Snort Team: http://www.snort.org/contact#team
+           Copyright (C) 2014-2022 Cisco and/or its affiliates. All rights reserved.
+           Copyright (C) 1998-2013 Sourcefire, Inc., et al.
+           Using PCRE version: 8.10 2010-06-25
+           Using ZLIB version: 1.2.11
+
+Commencing packet processing (pid=18708)
+
+
+
+
+
+
+
+
+
+
+
+
+

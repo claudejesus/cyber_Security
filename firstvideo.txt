@@ -1,0 +1,169 @@
+iscoasa>
+ciscoasa>en
+Password: 
+ciscoasa#conf t
+ciscoasa(config)#hostname PERIMETER-FW
+PERIMETER-FW(config)#user
+PERIMETER-FW(config)#username Gtech pas
+PERIMETER-FW(config)#username Gtech password Gtwch123
+PERIMETER-FW(config)#clo
+PERIMETER-FW(config)#clock s
+PERIMETER-FW(config)#clock set  20:16:30 24 March 2025
+PERIMETER-FW(config)#int gi
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/1, changed state to down
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/1, changed state to
+PERIMETER-FW(config)#int gi1.2
+                              ^
+% Invalid input detected at '^' marker.
+	
+PERIMETER-FW(config)#int gi1/2
+PERIMETER-FW(config-if)#no shutdown
+PERIMETER-FW(config-if)#do wr
+PERIMETER-FW(config)#ip add 10.10.10.1 255.255.255.0
+                        ^
+% Invalid input detected at '^' marker.
+	
+PERIMETER-FW(config)#ip address 10.10.10.1 255.255.255.0
+                        ^
+% Invalid input detected at '^' marker.
+	
+PERIMETER-FW(config)#ip add
+PERIMETER-FW(config)#ip addre
+PERIMETER-FW(config)#int gi1/2
+PERIMETER-FW(config-if)#ip address 10.10.10.1 255.255.255.0
+PERIMETER-FW(config-if)#nameif INSIDE
+PERIMETER-FW(config-if)#secu
+PERIMETER-FW(config-if)#security-level 100
+PERIMETER-FW(config-if)#ex
+PERIMETER-FW(config)#int gi1/2
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/1, changed state to down
+
+PERIMETER-FW(config-if)#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/1, changed state to down
+
+PERIMETER-FW(config-if)#ex
+PERIMETER-FW(config)#int gi1/1
+PERIMETER-FW(config-if)#no shutdown
+PERIMETER-FW(config-if)#ip add
+PERIMETER-FW(config-if)#ip address 201.0.0.1 255.0.0.0
+PERIMETER-FW(config-if)#name
+PERIMETER-FW(config-if)#nameif LMZ
+PERIMETER-FW(config-if)#NO SHUTDOWN
+PERIMETER-FW(config-if)#EX
+PERIMETER-FW(config)#int gi1/3
+PERIMETER-FW(config-if)#ip address 20.20.20.1 255.255.255.0
+PERIMETER-FW(config-if)#namif OUTSIDE
+                           ^
+% Invalid input detected at '^' marker.
+	
+PERIMETER-FW(config-if)#nameif OUTSIDE
+INFO: Security level for "OUTSIDE" set to 0 by default.
+PERIMETER-FW(config-if)#sec
+PERIMETER-FW(config-if)#security-level 0
+PERIMETER-FW(config-if)#no shut
+PERIMETER-FW(config-if)#no shutdown 
+
+%LINK-5-CHANGED: Interface GigabitEthernet1/3, changed state to down
+PERIMETER-FW(config-if)#
+PERIMETER-FW(config-if)#exi
+PERIMETER-FW(config)#wr mom
+                      ^
+% Invalid input detected at '^' marker.
+	
+PERIMETER-FW(config)#wr mem
+Building configuration...
+Cryptochecksum: 682f2af2 29515061 6a605d47 0c8668f1
+
+930  bytes copied in 2.446 secs (380 bytes/sec)
+[OK]
+PERIMETER-FW(config)#
+PERIMETER-FW(config)#wr mem
+Building configuration...
+Cryptochecksum: 682f2af2 29515061 6a605d47 0c8668f1
+
+930  bytes copied in 1.979 secs (469 bytes/sec)
+[OK]
+PERIMETER-FW(config)#sh start
+: Saved
+: Written by enable_15 at 20:38:11 UTC Mar 24 2025
+: Call-home enabled from prompt by enable_15 at 20:38:11 UTC Mar 24 2025
+:
+ASA Version 9.6(1)
+!
+hostname PERIMETER-FW
+domain-name wr
+names
+!
+interface GigabitEthernet1/1
+ nameif LMZ
+ security-level 100
+ ip address 201.0.0.1 255.0.0.0
+!
+interface GigabitEthernet1/2
+ nameif INSIDE
+ security-level 100
+ ip address 10.10.10.1 255.255.255.0
+!
+interface GigabitEthernet1/3
+ nameif OUTSIDE
+ security-level 0
+ ip address 20.20.20.1 255.255.255.0
+!
+interface GigabitEthernet1/4
+ no nameif
+ no security-level
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/5
+ no nameif
+ no security-level
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/6
+ no nameif
+ no security-level
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/7
+ no nameif
+ no security-level
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/8
+ no nameif
+ no security-level
+ no ip address
+ shutdown
+!
+interface Management1/1
+ management-only
+ no nameif
+ no security-level
+ no ip address
+!
+!
+!
+!
+!
+!
+!
+!
+username Gtech password sm8xhRiynu22OXxE encrypted
+!
+!
+!
+!
+telnet timeout 5
+ssh timeout 5
+!
+!
+!
+!
+!
+PERIMETER-FW(config)#
+PERIMETER-FW(config)#
